@@ -18,7 +18,8 @@ class Player:
 
     def toJSON(self):
         ret = {
-            'name': name,
-            'score': score,
-            'wordlist': wordList
+            'name': self.name,
+            'score': self.score,
+            'wordList': self.wordList
         }
+        return ret

@@ -9,12 +9,12 @@ from tornado.options import options
 
 # Standard Library Imports
 import json
-import random
 
 # Import Constants
 import constants
-import player
-import game
+
+from classes.player import Player
+from classes.game import Game
 
 
 class Application(tornado.web.Application):
@@ -72,18 +72,18 @@ class GameHandler(tornado.websocket.WebSocketHandler):
                 self.write_message(constants.ERROR_INVALID_MESSAGE)
             else:
                 command = msg['command']
-                if command == 'join':
+                if command == constants.JOIN_COMMAND:
                     """ Passed Message {command: 'join', playerName: name}
                         Return Message {'join'} """
 
                     self.join(msg)
 
-                elif command == "submit":
+                elif command == constants.SUBMIT_COMMAND:
                     """ Passed Message {command: 'submit', word} """
 
                     self.submit(msg)
 
-                elif command == "end":
+                elif command == constants.END_COMMAND:
                     """ Passed Message {command: 'end'} """
 
                     self.end_game(msg)
@@ -134,7 +134,7 @@ class GameHandler(tornado.websocket.WebSocketHandler):
         if self in self.application.gameLookup:
             gameIndex = self.application.gameLookup[self]
             self.application.games[gameIndex].submit(
-                message['word'], self)
+                message['word'], self.application.dictionary, self)
 
     def end_game(self, message):
         """ This function is called when the game ends """

@@ -70,5 +70,5 @@ END_COMMAND = 'end'
 # Indicates that both the players are finished with the game Server -> Client
 FINAL_COMMAND = 'final'
 
-# Indicates that both one of the players left the game -> Client
+# Indicates that both one of the players left the game -> Client -> Server
 QUIT_COMMAND = 'quit'
