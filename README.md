@@ -1,4 +1,4 @@
-# Cross and Knots Server
+# Red Letter Server
 
 > **Overview**
 >

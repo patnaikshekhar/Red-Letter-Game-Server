@@ -26,11 +26,11 @@ class Game:
         gameLetterUsage = {}
         gameLetterStrength = {}
 
-        for row in range(constants.ROW_TILES):
+        for row in xrange(constants.ROW_TILES):
 
             row_list = []
 
-            for col in range(constants.COLUMN_TILES):
+            for col in xrange(constants.COLUMN_TILES):
 
                 random_letter = random.choice(constants.LETTERS)
                 gameLetterUsage[random_letter] = 0
